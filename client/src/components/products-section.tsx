@@ -5,39 +5,26 @@ import { Skeleton } from "@/components/ui/skeleton";
 import GlassmorphicCard from "./glassmorphic-card";
 import { Circle, Square, Star, ChevronLeft, ChevronRight } from "lucide-react";
 import { type Product } from "@shared/schema";
-<<<<<<< HEAD
-<<<<<<< HEAD
 import { useQuotation } from "@/hooks/use-quotation";
 import { useCurrency } from "@/lib/currencyContext";
 import CurrencySelect from "@/components/currency-select";
 import CalculatorPopup from "@/components/calculator-popup";
 import { useQuotationUI } from "@/lib/quotationUIContext";
-=======
 import { useCallback, useEffect, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
->>>>>>> edbfa367108606d352323aff07cccee281b3d606
-=======
-import { useCallback, useEffect, useState } from "react";
-import useEmblaCarousel from "embla-carousel-react";
-import Autoplay from "embla-carousel-autoplay";
->>>>>>> edbfa367108606d352323aff07cccee281b3d606
 
 export default function ProductsSection() {
   const { data: products, isLoading } = useQuery<Product[]>({
     queryKey: ["/api/products/"], // Ensure trailing slash for Django
   });
 
-<<<<<<< HEAD
-<<<<<<< HEAD
   const { addItem, isAdding, isLoading: isQuoteLoading, quotation } = useQuotation();
   const { formatPrice } = useCurrency();
   const { openQuote } = useQuotationUI();
-=======
-=======
->>>>>>> edbfa367108606d352323aff07cccee281b3d606
+
   const [emblaRef, emblaApi] = useEmblaCarousel(
-    { 
+    {
       loop: true,
       align: "start",
       slidesToScroll: 1,
@@ -65,10 +52,6 @@ export default function ProductsSection() {
     emblaApi.on("select", onSelect);
     emblaApi.on("reInit", onSelect);
   }, [emblaApi, onSelect]);
-<<<<<<< HEAD
->>>>>>> edbfa367108606d352323aff07cccee281b3d606
-=======
->>>>>>> edbfa367108606d352323aff07cccee281b3d606
 
   const getIcon = (type: string) => {
     switch (type) {
@@ -84,44 +67,12 @@ export default function ProductsSection() {
   };
 
   const handleOrderNow = (productId: number) => {
-    // Instead of scrolling, we add to quote and open the popup
     addItem({ productId, quantity: 1 }, {
       onSuccess: () => {
         openQuote();
       }
     });
   };
-
-  if (isLoading) {
-    return (
-      <section id="products" className="py-20 bg-gradient-to-b from-gray-50 to-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-              Our{" "}
-              <span className="holographic-text">Premium Products</span>
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              From small square bales to large round bales, we provide premium quality hay for all your agricultural needs
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {Array.from({ length: 3 }).map((_, index) => (
-              <GlassmorphicCard key={index} className="p-6">
-                <Skeleton className="w-full h-48 rounded-xl mb-6" />
-                <Skeleton className="h-8 w-3/4 mb-4" />
-                <Skeleton className="h-20 w-full mb-6" />
-                <div className="flex justify-between items-center">
-                  <Skeleton className="h-8 w-24" />
-                  <Skeleton className="h-10 w-24 rounded-full" />
-                </div>
-              </GlassmorphicCard>
-            ))}
-          </div>
-        </div>
-      </section>
-    );
-  }
 
   if (isLoading) {
     return (
@@ -176,27 +127,6 @@ export default function ProductsSection() {
           </p>
         </div>
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {isLoading
-            ? Array.from({ length: 3 }).map((_, index) => (
-              <GlassmorphicCard key={index} className="p-6">
-                <Skeleton className="w-full h-48 rounded-xl mb-6" />
-                <Skeleton className="h-8 w-3/4 mb-4" />
-                <Skeleton className="h-20 w-full mb-6" />
-                <div className="flex justify-between items-center">
-                  <Skeleton className="h-8 w-24" />
-                  <Skeleton className="h-10 w-24 rounded-full" />
-                </div>
-              </GlassmorphicCard>
-            ))
-            : products?.map((product, index) => (
-              <motion.div
-                key={product.id}
-=======
-=======
->>>>>>> edbfa367108606d352323aff07cccee281b3d606
         <div className="relative">
           <div className="overflow-hidden" ref={emblaRef}>
             <div className="flex">
@@ -211,7 +141,7 @@ export default function ProductsSection() {
                   >
                     <GlassmorphicCard className="p-6 hover-lift group h-full">
                       <img
-                        src={product.image}
+                        src={product.image || "https://images.unsplash.com/photo-1549247385-d687441225eb"}
                         alt={product.name}
                         className="w-full h-48 object-cover rounded-xl mb-6"
                       />
@@ -227,10 +157,11 @@ export default function ProductsSection() {
                           {formatPrice(product.price)}/bale
                         </span>
                         <Button
-                          onClick={handleOrderNow}
-                          className="holographic-bg text-white hover:scale-105 transition-transform"
+                          onClick={() => handleOrderNow(product.id)}
+                          disabled={isAdding || isQuoteLoading || !quotation}
+                          className="holographic-bg text-white hover:scale-105 transition-transform disabled:opacity-50 disabled:cursor-not-allowed"
                         >
-                          Order Now
+                          {isQuoteLoading ? "Loading..." : "Request Quote"}
                         </Button>
                       </div>
                     </GlassmorphicCard>
@@ -240,25 +171,29 @@ export default function ProductsSection() {
             </div>
           </div>
 
-          {/* Navigation Buttons */}
-          <Button
-            variant="outline"
-            size="icon"
-            className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 backdrop-blur-sm border-gray-200 hover:bg-white/90 transition-all duration-300 shadow-lg z-10"
-            onClick={scrollPrev}
-            disabled={!prevBtnEnabled}
-          >
-            <ChevronLeft className="h-4 w-4" />
-          </Button>
-          <Button
-            variant="outline"
-            size="icon"
-            className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 backdrop-blur-sm border-gray-200 hover:bg-white/90 transition-all duration-300 shadow-lg z-10"
-            onClick={scrollNext}
-            disabled={!nextBtnEnabled}
-          >
-            <ChevronRight className="h-4 w-4" />
-          </Button>
+          {/* Navigation Buttons for Desktop */}
+          {products && products.length > 3 && (
+            <>
+              <Button
+                variant="outline"
+                size="icon"
+                className="hidden md:flex absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 backdrop-blur-sm border-gray-200 hover:bg-white/90 transition-all duration-300 shadow-lg z-10"
+                onClick={scrollPrev}
+                disabled={!prevBtnEnabled}
+              >
+                <ChevronLeft className="h-4 w-4" />
+              </Button>
+              <Button
+                variant="outline"
+                size="icon"
+                className="hidden md:flex absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 backdrop-blur-sm border-gray-200 hover:bg-white/90 transition-all duration-300 shadow-lg z-10"
+                onClick={scrollNext}
+                disabled={!nextBtnEnabled}
+              >
+                <ChevronRight className="h-4 w-4" />
+              </Button>
+            </>
+          )}
 
           {/* Dots Indicator */}
           {products && products.length > 0 && (
@@ -266,96 +201,17 @@ export default function ProductsSection() {
               {products.map((_, index) => (
                 <button
                   key={index}
-                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                    index === selectedIndex
+                  className={`w-3 h-3 rounded-full transition-all duration-300 ${index === selectedIndex
                       ? "bg-forest scale-125"
                       : "bg-gray-300 hover:bg-gray-400"
-                  }`}
+                    }`}
                   onClick={() => emblaApi && emblaApi.scrollTo(index)}
                 />
               ))}
             </div>
           )}
         </div>
-
-        {/* Fallback Grid for smaller screens or when carousel is not ideal */}
-        <div className="md:hidden mt-12">
-          <div className="grid grid-cols-1 gap-8">
-            {products?.map((product, index) => (
-              <motion.div
-                key={`grid-${product.id}`}
-<<<<<<< HEAD
->>>>>>> edbfa367108606d352323aff07cccee281b3d606
-=======
->>>>>>> edbfa367108606d352323aff07cccee281b3d606
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-              >
-                <GlassmorphicCard className="p-6 hover-lift group">
-                  <img
-<<<<<<< HEAD
-<<<<<<< HEAD
-                    src={product.image || "https://images.unsplash.com/photo-1549247385-d687441225eb"}
-=======
-                    src={product.image}
->>>>>>> edbfa367108606d352323aff07cccee281b3d606
-=======
-                    src={product.image}
->>>>>>> edbfa367108606d352323aff07cccee281b3d606
-                    alt={product.name}
-                    className="w-full h-48 object-cover rounded-xl mb-6"
-                  />
-                  <div className="flex items-center mb-4">
-                    {getIcon(product.type)}
-                    <h3 className="text-2xl font-bold text-gray-900">
-                      {product.name}
-                    </h3>
-                  </div>
-                  <p className="text-gray-600 mb-6">{product.description}</p>
-                  <div className="flex justify-between items-center">
-                    <span className="text-2xl font-bold text-forest">
-<<<<<<< HEAD
-<<<<<<< HEAD
-                      {formatPrice(product.price)}
-                    </span>
-                    <Button
-                      onClick={() => handleOrderNow(product.id)}
-                      disabled={isAdding || isQuoteLoading || !quotation}
-                      className="holographic-bg text-white hover:scale-105 transition-transform disabled:opacity-50 disabled:cursor-not-allowed"
-                    >
-                      {isQuoteLoading ? "Loading Quote..." : !quotation ? "Request Quote" : isAdding ? "Adding..." : "Request Quote"}
-=======
-=======
->>>>>>> edbfa367108606d352323aff07cccee281b3d606
-                      {formatPrice(product.price)}/bale
-                    </span>
-                    <Button
-                      onClick={handleOrderNow}
-                      className="holographic-bg text-white hover:scale-105 transition-transform"
-                    >
-                      Order Now
-<<<<<<< HEAD
->>>>>>> edbfa367108606d352323aff07cccee281b3d606
-=======
->>>>>>> edbfa367108606d352323aff07cccee281b3d606
-                    </Button>
-                  </div>
-                </GlassmorphicCard>
-              </motion.div>
-            ))}
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-          </div>
->>>>>>> edbfa367108606d352323aff07cccee281b3d606
-=======
-          </div>
->>>>>>> edbfa367108606d352323aff07cccee281b3d606
-        </div>
       </div>
     </section>
   );
 }
-
