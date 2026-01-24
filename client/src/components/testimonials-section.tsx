@@ -43,6 +43,20 @@ export default function TestimonialsSection() {
       rating: 5,
       image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&h=200",
     },
+    {
+      name: "Robert Davis",
+      title: "Cattle Rancher",
+      content: "Exceptional service and top-quality hay. Our cattle have never been healthier. HayFlow delivers excellence every time.",
+      rating: 5,
+      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&h=200",
+    },
+    {
+      name: "Jennifer Wilson",
+      title: "Horse Trainer",
+      content: "The consistency and quality of their hay is remarkable. Our horses love it and we've seen great improvements in their health.",
+      rating: 5,
+      image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&h=200",
+    },
   ];
 
   const [emblaRef, emblaApi] = useEmblaCarousel(
@@ -98,6 +112,7 @@ export default function TestimonialsSection() {
           </p>
         </div>
 
+<<<<<<< HEAD
 <<<<<<< HEAD
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {testimonials.map((testimonial, index) => (
@@ -166,6 +181,40 @@ export default function TestimonialsSection() {
                     </GlassmorphicCard>
                   </motion.div>
                 </div>
+=======
+        <div className="relative">
+          <div className="overflow-hidden" ref={emblaRef}>
+            <div className="flex">
+              {testimonials.map((testimonial, index) => (
+                <div key={index} className="flex-[0_0_100%] md:flex-[0_0_50%] lg:flex-[0_0_33.333%] pl-4">
+                  <motion.div
+                    initial={{ opacity: 0, y: 50 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    viewport={{ once: true }}
+                    className="mr-4"
+                  >
+                    <GlassmorphicCard className="p-6 hover-lift relative h-full">
+                      <Quote className="absolute top-4 right-4 text-forest text-2xl opacity-20" />
+                      <div className="flex items-center mb-4">
+                        <img
+                          src={testimonial.image}
+                          alt={testimonial.name}
+                          className="w-16 h-16 rounded-full object-cover mr-4"
+                        />
+                        <div>
+                          <h4 className="text-lg font-semibold text-gray-900">
+                            {testimonial.name}
+                          </h4>
+                          <p className="text-gray-600">{testimonial.title}</p>
+                        </div>
+                      </div>
+                      <div className="flex mb-4">{renderStars(testimonial.rating)}</div>
+                      <p className="text-gray-700 italic">"{testimonial.content}"</p>
+                    </GlassmorphicCard>
+                  </motion.div>
+                </div>
+>>>>>>> edbfa367108606d352323aff07cccee281b3d606
               ))}
             </div>
           </div>
@@ -204,6 +253,9 @@ export default function TestimonialsSection() {
               />
             ))}
           </div>
+<<<<<<< HEAD
+>>>>>>> edbfa367108606d352323aff07cccee281b3d606
+=======
 >>>>>>> edbfa367108606d352323aff07cccee281b3d606
         </div>
       </div>

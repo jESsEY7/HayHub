@@ -6,11 +6,17 @@ import GlassmorphicCard from "./glassmorphic-card";
 import { Circle, Square, Star, ChevronLeft, ChevronRight } from "lucide-react";
 import { type Product } from "@shared/schema";
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { useQuotation } from "@/hooks/use-quotation";
 import { useCurrency } from "@/lib/currencyContext";
 import CurrencySelect from "@/components/currency-select";
 import CalculatorPopup from "@/components/calculator-popup";
 import { useQuotationUI } from "@/lib/quotationUIContext";
+=======
+import { useCallback, useEffect, useState } from "react";
+import useEmblaCarousel from "embla-carousel-react";
+import Autoplay from "embla-carousel-autoplay";
+>>>>>>> edbfa367108606d352323aff07cccee281b3d606
 =======
 import { useCallback, useEffect, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
@@ -23,10 +29,13 @@ export default function ProductsSection() {
   });
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   const { addItem, isAdding, isLoading: isQuoteLoading, quotation } = useQuotation();
   const { formatPrice } = useCurrency();
   const { openQuote } = useQuotationUI();
 =======
+=======
+>>>>>>> edbfa367108606d352323aff07cccee281b3d606
   const [emblaRef, emblaApi] = useEmblaCarousel(
     { 
       loop: true,
@@ -56,6 +65,9 @@ export default function ProductsSection() {
     emblaApi.on("select", onSelect);
     emblaApi.on("reInit", onSelect);
   }, [emblaApi, onSelect]);
+<<<<<<< HEAD
+>>>>>>> edbfa367108606d352323aff07cccee281b3d606
+=======
 >>>>>>> edbfa367108606d352323aff07cccee281b3d606
 
   const getIcon = (type: string) => {
@@ -111,6 +123,37 @@ export default function ProductsSection() {
     );
   }
 
+  if (isLoading) {
+    return (
+      <section id="products" className="py-20 bg-gradient-to-b from-gray-50 to-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+              Our{" "}
+              <span className="holographic-text">Premium Products</span>
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              From small square bales to large round bales, we provide premium quality hay for all your agricultural needs
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {Array.from({ length: 3 }).map((_, index) => (
+              <GlassmorphicCard key={index} className="p-6">
+                <Skeleton className="w-full h-48 rounded-xl mb-6" />
+                <Skeleton className="h-8 w-3/4 mb-4" />
+                <Skeleton className="h-20 w-full mb-6" />
+                <div className="flex justify-between items-center">
+                  <Skeleton className="h-8 w-24" />
+                  <Skeleton className="h-10 w-24 rounded-full" />
+                </div>
+              </GlassmorphicCard>
+            ))}
+          </div>
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section id="products" className="py-20 bg-gradient-to-b from-gray-50 to-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -134,6 +177,7 @@ export default function ProductsSection() {
         </div>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {isLoading
             ? Array.from({ length: 3 }).map((_, index) => (
@@ -151,6 +195,8 @@ export default function ProductsSection() {
               <motion.div
                 key={product.id}
 =======
+=======
+>>>>>>> edbfa367108606d352323aff07cccee281b3d606
         <div className="relative">
           <div className="overflow-hidden" ref={emblaRef}>
             <div className="flex">
@@ -238,6 +284,9 @@ export default function ProductsSection() {
             {products?.map((product, index) => (
               <motion.div
                 key={`grid-${product.id}`}
+<<<<<<< HEAD
+>>>>>>> edbfa367108606d352323aff07cccee281b3d606
+=======
 >>>>>>> edbfa367108606d352323aff07cccee281b3d606
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -247,7 +296,11 @@ export default function ProductsSection() {
                 <GlassmorphicCard className="p-6 hover-lift group">
                   <img
 <<<<<<< HEAD
+<<<<<<< HEAD
                     src={product.image || "https://images.unsplash.com/photo-1549247385-d687441225eb"}
+=======
+                    src={product.image}
+>>>>>>> edbfa367108606d352323aff07cccee281b3d606
 =======
                     src={product.image}
 >>>>>>> edbfa367108606d352323aff07cccee281b3d606
@@ -264,6 +317,7 @@ export default function ProductsSection() {
                   <div className="flex justify-between items-center">
                     <span className="text-2xl font-bold text-forest">
 <<<<<<< HEAD
+<<<<<<< HEAD
                       {formatPrice(product.price)}
                     </span>
                     <Button
@@ -273,6 +327,8 @@ export default function ProductsSection() {
                     >
                       {isQuoteLoading ? "Loading Quote..." : !quotation ? "Request Quote" : isAdding ? "Adding..." : "Request Quote"}
 =======
+=======
+>>>>>>> edbfa367108606d352323aff07cccee281b3d606
                       {formatPrice(product.price)}/bale
                     </span>
                     <Button
@@ -280,6 +336,9 @@ export default function ProductsSection() {
                       className="holographic-bg text-white hover:scale-105 transition-transform"
                     >
                       Order Now
+<<<<<<< HEAD
+>>>>>>> edbfa367108606d352323aff07cccee281b3d606
+=======
 >>>>>>> edbfa367108606d352323aff07cccee281b3d606
                     </Button>
                   </div>
@@ -287,6 +346,10 @@ export default function ProductsSection() {
               </motion.div>
             ))}
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+          </div>
+>>>>>>> edbfa367108606d352323aff07cccee281b3d606
 =======
           </div>
 >>>>>>> edbfa367108606d352323aff07cccee281b3d606
