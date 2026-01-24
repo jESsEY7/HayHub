@@ -60,7 +60,7 @@ export default function TestimonialsSection() {
   ];
 
   const [emblaRef, emblaApi] = useEmblaCarousel(
-    { 
+    {
       loop: true,
       align: "start",
       slidesToScroll: 1,
@@ -112,43 +112,7 @@ export default function TestimonialsSection() {
           </p>
         </div>
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {testimonials.map((testimonial, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              viewport={{ once: true }}
-            >
-              <GlassmorphicCard className="p-8 hover-lift relative h-full flex flex-col">
-                <Quote className="absolute top-6 right-6 text-forest/10 w-10 h-10" />
 
-                <div className="flex mb-4">{renderStars(testimonial.rating)}</div>
-
-                <p className="text-gray-700 mb-6 flex-grow leading-relaxed">
-                  "{testimonial.content}"
-                </p>
-
-                <div className="border-t border-gray-200 pt-4">
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <h4 className="text-base font-semibold text-gray-900">
-                        {testimonial.name}
-                      </h4>
-                      <p className="text-sm text-gray-600">{testimonial.title}</p>
-                    </div>
-                    <div className="text-xs text-gray-500 uppercase tracking-wider">
-                      {testimonial.location}
-                    </div>
-                  </div>
-                </div>
-              </GlassmorphicCard>
-            </motion.div>
-          ))}
-=======
         <div className="relative">
           <div className="overflow-hidden" ref={emblaRef}>
             <div className="flex">
@@ -181,40 +145,7 @@ export default function TestimonialsSection() {
                     </GlassmorphicCard>
                   </motion.div>
                 </div>
-=======
-        <div className="relative">
-          <div className="overflow-hidden" ref={emblaRef}>
-            <div className="flex">
-              {testimonials.map((testimonial, index) => (
-                <div key={index} className="flex-[0_0_100%] md:flex-[0_0_50%] lg:flex-[0_0_33.333%] pl-4">
-                  <motion.div
-                    initial={{ opacity: 0, y: 50 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                    viewport={{ once: true }}
-                    className="mr-4"
-                  >
-                    <GlassmorphicCard className="p-6 hover-lift relative h-full">
-                      <Quote className="absolute top-4 right-4 text-forest text-2xl opacity-20" />
-                      <div className="flex items-center mb-4">
-                        <img
-                          src={testimonial.image}
-                          alt={testimonial.name}
-                          className="w-16 h-16 rounded-full object-cover mr-4"
-                        />
-                        <div>
-                          <h4 className="text-lg font-semibold text-gray-900">
-                            {testimonial.name}
-                          </h4>
-                          <p className="text-gray-600">{testimonial.title}</p>
-                        </div>
-                      </div>
-                      <div className="flex mb-4">{renderStars(testimonial.rating)}</div>
-                      <p className="text-gray-700 italic">"{testimonial.content}"</p>
-                    </GlassmorphicCard>
-                  </motion.div>
-                </div>
->>>>>>> edbfa367108606d352323aff07cccee281b3d606
+
               ))}
             </div>
           </div>
@@ -244,19 +175,15 @@ export default function TestimonialsSection() {
             {testimonials.map((_, index) => (
               <button
                 key={index}
-                className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                  index === selectedIndex
+                className={`w-3 h-3 rounded-full transition-all duration-300 ${index === selectedIndex
                     ? "bg-forest scale-125"
                     : "bg-gray-300 hover:bg-gray-400"
-                }`}
+                  }`}
                 onClick={() => emblaApi && emblaApi.scrollTo(index)}
               />
             ))}
           </div>
-<<<<<<< HEAD
->>>>>>> edbfa367108606d352323aff07cccee281b3d606
-=======
->>>>>>> edbfa367108606d352323aff07cccee281b3d606
+
         </div>
       </div>
     </section>

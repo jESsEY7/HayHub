@@ -1,0 +1,73 @@
+﻿
+> rest-express@1.0.0 check
+> tsc
+
+client/src/components/products-section.tsx(8,1): error TS1185: Merge conflict marker encountered.
+client/src/components/products-section.tsx(9,1): error TS1185: Merge conflict marker encountered.
+client/src/components/products-section.tsx(15,1): error TS1185: Merge conflict marker encountered.
+client/src/components/products-section.tsx(19,1): error TS1185: Merge conflict marker encountered.
+client/src/components/products-section.tsx(20,1): error TS1185: Merge conflict marker encountered.
+client/src/components/products-section.tsx(24,1): error TS1185: Merge conflict marker encountered.
+client/src/components/products-section.tsx(31,1): error TS1185: Merge conflict marker encountered.
+client/src/components/products-section.tsx(32,1): error TS1185: Merge conflict marker encountered.
+client/src/components/products-section.tsx(36,1): error TS1185: Merge conflict marker encountered.
+client/src/components/products-section.tsx(38,1): error TS1185: Merge conflict marker encountered.
+client/src/components/products-section.tsx(68,1): error TS1185: Merge conflict marker encountered.
+client/src/components/products-section.tsx(69,1): error TS1185: Merge conflict marker encountered.
+client/src/components/products-section.tsx(70,1): error TS1185: Merge conflict marker encountered.
+client/src/components/products-section.tsx(71,1): error TS1185: Merge conflict marker encountered.
+client/src/components/products-section.tsx(177,15): error TS1005: '</' expected.
+client/src/components/products-section.tsx(179,1): error TS1185: Merge conflict marker encountered.
+client/src/components/products-section.tsx(180,1): error TS1185: Merge conflict marker encountered.
+client/src/components/products-section.tsx(195,15): error TS2657: JSX expressions must have one parent element.
+client/src/components/products-section.tsx(197,1): error TS1185: Merge conflict marker encountered.
+client/src/components/products-section.tsx(199,1): error TS1185: Merge conflict marker encountered.
+client/src/components/products-section.tsx(200,9): error TS1003: Identifier expected.
+client/src/components/products-section.tsx(281,9): error TS1005: ')' expected.
+client/src/components/products-section.tsx(282,14): error TS1005: ',' expected.
+client/src/components/products-section.tsx(287,1): error TS1185: Merge conflict marker encountered.
+client/src/components/products-section.tsx(288,1): error TS1185: Merge conflict marker encountered.
+client/src/components/products-section.tsx(289,1): error TS1185: Merge conflict marker encountered.
+client/src/components/products-section.tsx(290,1): error TS1185: Merge conflict marker encountered.
+client/src/components/products-section.tsx(298,1): error TS1185: Merge conflict marker encountered.
+client/src/components/products-section.tsx(299,1): error TS1185: Merge conflict marker encountered.
+client/src/components/products-section.tsx(301,1): error TS1185: Merge conflict marker encountered.
+client/src/components/products-section.tsx(303,1): error TS1185: Merge conflict marker encountered.
+client/src/components/products-section.tsx(304,1): error TS1185: Merge conflict marker encountered.
+client/src/components/products-section.tsx(306,1): error TS1185: Merge conflict marker encountered.
+client/src/components/products-section.tsx(318,70): error TS1005: '</' expected.
+client/src/components/products-section.tsx(319,1): error TS1185: Merge conflict marker encountered.
+client/src/components/products-section.tsx(320,1): error TS1185: Merge conflict marker encountered.
+client/src/components/products-section.tsx(322,21): error TS1128: Declaration or statement expected.
+client/src/components/products-section.tsx(323,21): error TS2657: JSX expressions must have one parent element.
+client/src/components/products-section.tsx(331,1): error TS1382: Unexpected token. Did you mean `{'>'}` or `&gt;`?
+client/src/components/products-section.tsx(331,2): error TS1382: Unexpected token. Did you mean `{'>'}` or `&gt;`?
+client/src/components/products-section.tsx(331,3): error TS1382: Unexpected token. Did you mean `{'>'}` or `&gt;`?
+client/src/components/products-section.tsx(331,4): error TS1382: Unexpected token. Did you mean `{'>'}` or `&gt;`?
+client/src/components/products-section.tsx(331,5): error TS1382: Unexpected token. Did you mean `{'>'}` or `&gt;`?
+client/src/components/products-section.tsx(331,6): error TS1382: Unexpected token. Did you mean `{'>'}` or `&gt;`?
+client/src/components/products-section.tsx(331,7): error TS1382: Unexpected token. Did you mean `{'>'}` or `&gt;`?
+client/src/components/products-section.tsx(333,23): error TS17002: Expected corresponding JSX closing tag for 'Button'.
+client/src/components/products-section.tsx(337,22): error TS1005: '</' expected.
+client/src/components/products-section.tsx(337,22): error TS1128: Declaration or statement expected.
+client/src/components/products-section.tsx(339,1): error TS1185: Merge conflict marker encountered.
+client/src/components/products-section.tsx(340,1): error TS1185: Merge conflict marker encountered.
+client/src/components/products-section.tsx(341,1): error TS1185: Merge conflict marker encountered.
+client/src/components/products-section.tsx(342,1): error TS1185: Merge conflict marker encountered.
+client/src/components/products-section.tsx(343,21): error TS1128: Declaration or statement expected.
+client/src/components/products-section.tsx(344,19): error TS1109: Expression expected.
+client/src/components/products-section.tsx(345,17): error TS1109: Expression expected.
+client/src/components/products-section.tsx(346,15): error TS1109: Expression expected.
+client/src/components/products-section.tsx(347,13): error TS1109: Expression expected.
+client/src/components/products-section.tsx(347,14): error TS1128: Declaration or statement expected.
+client/src/components/products-section.tsx(348,1): error TS1185: Merge conflict marker encountered.
+client/src/components/products-section.tsx(349,1): error TS1185: Merge conflict marker encountered.
+client/src/components/products-section.tsx(350,1): error TS1185: Merge conflict marker encountered.
+client/src/components/products-section.tsx(352,1): error TS1185: Merge conflict marker encountered.
+client/src/components/products-section.tsx(353,1): error TS1185: Merge conflict marker encountered.
+client/src/components/products-section.tsx(355,1): error TS1185: Merge conflict marker encountered.
+client/src/components/products-section.tsx(356,9): error TS1128: Declaration or statement expected.
+client/src/components/products-section.tsx(357,7): error TS1109: Expression expected.
+client/src/components/products-section.tsx(358,5): error TS1109: Expression expected.
+client/src/components/products-section.tsx(359,3): error TS1109: Expression expected.
+client/src/components/products-section.tsx(360,1): error TS1128: Declaration or statement expected.
