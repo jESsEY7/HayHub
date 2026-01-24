@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
-import { ShoppingCart, Play, ChevronDown } from "lucide-react";
+import { ShoppingCart, ChevronDown } from "lucide-react";
 import { motion } from "framer-motion";
 import GlassmorphicCard from "./glassmorphic-card";
 
@@ -63,22 +63,14 @@ export default function HeroSection() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button
-                onClick={handleScrollToContact}
+                onClick={handleScrollToProducts}
                 size="lg"
                 className="holographic-bg text-white hover:shadow-lg transition-all duration-300 hover:scale-105"
               >
                 <ShoppingCart className="mr-2 h-5 w-5" />
                 Shop Now
               </Button>
-              <Button
-                onClick={handleScrollToProducts}
-                variant="outline"
-                size="lg"
-                className="glass-morphism text-white border-white/30 hover:bg-white/20 transition-all duration-300"
-              >
-                <Play className="mr-2 h-5 w-5" />
-                Learn More
-              </Button>
+
             </div>
           </GlassmorphicCard>
         </motion.div>

@@ -11,9 +11,9 @@ export default function AboutSection() {
   ];
 
   const stats = [
-    { value: "10000", label: "Bales Delivered" },
-    { value: "500", label: "Happy Customers" },
-    { value: "15", label: "Years Experience" },
+    { value: "1000", label: "Bales Delivered" },
+    { value: "50", label: "Happy Customers" },
+    { value: "5", label: "Years Experience" },
     { value: "99", label: "% Satisfaction" },
   ];
 
@@ -57,7 +57,7 @@ export default function AboutSection() {
               <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
                 Growing{" "}
                 <span className="holographic-text">Excellence</span>{" "}
-                Since 2008
+                Since then
               </h2>
               <p className="text-xl text-gray-600 mb-6">
                 HayFlow has been a trusted partner to farmers, ranchers, and agricultural businesses across the region. Our commitment to quality and service has made us the preferred supplier for premium hay products.
@@ -70,12 +70,12 @@ export default function AboutSection() {
                   </div>
                 ))}
               </div>
-              <Button
+              {/* <Button
                 size="lg"
                 className="holographic-bg text-white hover:shadow-lg transition-all duration-300 hover:scale-105"
               >
                 Learn Our Story
-              </Button>
+              </Button> */}
             </motion.div>
 
             <motion.div

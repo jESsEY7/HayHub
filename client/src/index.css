@@ -216,3 +216,31 @@
 .animate-shimmer {
   animation: shimmer 2s infinite;
 }
+
+/* Accessibility & Fluid Typography */
+h2 {
+  font-size: clamp(1.5rem, 4.5vw, 2.5rem);
+  font-weight: 800;
+}
+
+button:focus-visible, 
+[role="button"]:focus-visible, 
+a:focus-visible {
+  outline: 4px solid hsl(var(--forest));
+  outline-offset: 4px;
+  box-shadow: 0 0 0 8px rgba(45, 90, 39, 0.2);
+}
+
+.btn-confirm,
+.btn-close {
+  min-height: 3rem;
+  min-width: 3rem;
+ /* Handled by Tailwind classes but ensuring hit targets */
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}

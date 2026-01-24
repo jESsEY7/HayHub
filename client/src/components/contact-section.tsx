@@ -82,12 +82,12 @@ export default function ContactSection() {
     {
       icon: <MapPin className="text-white" />,
       title: "Location",
-      content: "1234 Farm Road, Agricultural Valley, AV 12345",
+      content: "Somewhere in Kenya",
     },
     {
       icon: <Phone className="text-white" />,
       title: "Phone",
-      content: "(555) 123-4567",
+      content: "(070) 427-7682",
     },
     {
       icon: <Mail className="text-white" />,

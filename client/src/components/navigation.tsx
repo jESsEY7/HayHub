@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu, Leaf } from "lucide-react";
+import CurrencySelect from "@/components/currency-select";
 
 export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -30,11 +31,10 @@ export default function Navigation() {
 
   return (
     <nav
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        isScrolled
-          ? "glass-morphism bg-white/95 shadow-lg"
-          : "glass-morphism"
-      }`}
+      className={`fixed top-0 w-full z-50 transition-all duration-300 ${isScrolled
+        ? "glass-morphism bg-white/95 shadow-lg"
+        : "glass-morphism"
+        }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
@@ -45,7 +45,7 @@ export default function Navigation() {
 
           {/* Desktop Navigation */}
           <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-8">
+            <div className="ml-10 flex items-center space-x-8">
               {navLinks.map((link) => (
                 <button
                   key={link.href}
@@ -58,14 +58,7 @@ export default function Navigation() {
             </div>
           </div>
 
-          <div className="hidden md:flex items-center">
-            <Button
-              onClick={() => handleNavClick("#contact")}
-              className="holographic-bg text-white hover:shadow-lg transition-all duration-300 hover:scale-105"
-            >
-              Get Quote
-            </Button>
-          </div>
+
 
           {/* Mobile Navigation */}
           <div className="md:hidden">
@@ -86,12 +79,7 @@ export default function Navigation() {
                       {link.label}
                     </button>
                   ))}
-                  <Button
-                    onClick={() => handleNavClick("#contact")}
-                    className="holographic-bg text-white mt-4"
-                  >
-                    Get Quote
-                  </Button>
+
                 </div>
               </SheetContent>
             </Sheet>

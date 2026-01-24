@@ -53,10 +53,10 @@ export default function CTASection() {
               <span className="text-wheat">Premium Hay?</span>
             </h2>
             <p className="text-xl text-gray-200 mb-8 max-w-2xl mx-auto">
-              Join hundreds of satisfied customers who trust HayFlow for their agricultural needs. 
+              Join satisfied customers who trust quality for their agricultural needs.
               Get your custom quote today and experience the difference quality makes.
             </p>
-            
+
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
               <Button
                 onClick={handleContactClick}
@@ -70,10 +70,10 @@ export default function CTASection() {
               <Button
                 variant="outline"
                 size="lg"
-                className="glass-morphism text-white border-white/30 hover:bg-white/20 transition-all duration-300"
+                className="bg-transparent text-white border-white/30 hover:bg-white/10 transition-all duration-300"
               >
                 <Phone className="mr-2 h-5 w-5" />
-                Call (555) 123-4567
+                Call  (070) 427-5682
               </Button>
             </div>
 

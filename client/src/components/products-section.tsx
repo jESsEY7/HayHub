@@ -5,11 +5,20 @@ import { Skeleton } from "@/components/ui/skeleton";
 import GlassmorphicCard from "./glassmorphic-card";
 import { Circle, Square, Star } from "lucide-react";
 import { type Product } from "@shared/schema";
+import { useQuotation } from "@/hooks/use-quotation";
+import { useCurrency } from "@/lib/currencyContext";
+import CurrencySelect from "@/components/currency-select";
+import CalculatorPopup from "@/components/calculator-popup";
+import { useQuotationUI } from "@/lib/quotationUIContext";
 
 export default function ProductsSection() {
   const { data: products, isLoading } = useQuery<Product[]>({
-    queryKey: ["/api/products"],
+    queryKey: ["/api/products/"], // Ensure trailing slash for Django
   });
+
+  const { addItem, isAdding, isLoading: isQuoteLoading, quotation } = useQuotation();
+  const { formatPrice } = useCurrency();
+  const { openQuote } = useQuotationUI();
 
   const getIcon = (type: string) => {
     switch (type) {
@@ -24,19 +33,28 @@ export default function ProductsSection() {
     }
   };
 
-  const formatPrice = (priceInCents: number) => {
-    return `$${(priceInCents / 100).toFixed(0)}`;
-  };
-
-  const handleOrderNow = () => {
-    const element = document.querySelector("#contact");
-    element?.scrollIntoView({ behavior: "smooth" });
+  const handleOrderNow = (productId: number) => {
+    // Instead of scrolling, we add to quote and open the popup
+    addItem({ productId, quantity: 1 }, {
+      onSuccess: () => {
+        openQuote();
+      }
+    });
   };
 
   return (
     <section id="products" className="py-20 bg-gradient-to-b from-gray-50 to-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+        <div className="text-center mb-16 relative">
+          <div className="absolute top-0 right-0 hidden md:flex items-center gap-2">
+            <CalculatorPopup />
+            <CurrencySelect />
+          </div>
+          <div className="md:hidden flex justify-center items-center gap-2 mb-4">
+            <CalculatorPopup />
+            <CurrencySelect />
+          </div>
+
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
             Our{" "}
             <span className="holographic-text">Premium Products</span>
@@ -49,51 +67,52 @@ export default function ProductsSection() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {isLoading
             ? Array.from({ length: 3 }).map((_, index) => (
-                <GlassmorphicCard key={index} className="p-6">
-                  <Skeleton className="w-full h-48 rounded-xl mb-6" />
-                  <Skeleton className="h-8 w-3/4 mb-4" />
-                  <Skeleton className="h-20 w-full mb-6" />
+              <GlassmorphicCard key={index} className="p-6">
+                <Skeleton className="w-full h-48 rounded-xl mb-6" />
+                <Skeleton className="h-8 w-3/4 mb-4" />
+                <Skeleton className="h-20 w-full mb-6" />
+                <div className="flex justify-between items-center">
+                  <Skeleton className="h-8 w-24" />
+                  <Skeleton className="h-10 w-24 rounded-full" />
+                </div>
+              </GlassmorphicCard>
+            ))
+            : products?.map((product, index) => (
+              <motion.div
+                key={product.id}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+              >
+                <GlassmorphicCard className="p-6 hover-lift group">
+                  <img
+                    src={product.image || "https://images.unsplash.com/photo-1549247385-d687441225eb"}
+                    alt={product.name}
+                    className="w-full h-48 object-cover rounded-xl mb-6"
+                  />
+                  <div className="flex items-center mb-4">
+                    {getIcon(product.type)}
+                    <h3 className="text-2xl font-bold text-gray-900">
+                      {product.name}
+                    </h3>
+                  </div>
+                  <p className="text-gray-600 mb-6">{product.description}</p>
                   <div className="flex justify-between items-center">
-                    <Skeleton className="h-8 w-24" />
-                    <Skeleton className="h-10 w-24 rounded-full" />
+                    <span className="text-2xl font-bold text-forest">
+                      {formatPrice(product.price)}
+                    </span>
+                    <Button
+                      onClick={() => handleOrderNow(product.id)}
+                      disabled={isAdding || isQuoteLoading || !quotation}
+                      className="holographic-bg text-white hover:scale-105 transition-transform disabled:opacity-50 disabled:cursor-not-allowed"
+                    >
+                      {isQuoteLoading ? "Loading Quote..." : !quotation ? "Request Quote" : isAdding ? "Adding..." : "Request Quote"}
+                    </Button>
                   </div>
                 </GlassmorphicCard>
-              ))
-            : products?.map((product, index) => (
-                <motion.div
-                  key={product.id}
-                  initial={{ opacity: 0, y: 50 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                >
-                  <GlassmorphicCard className="p-6 hover-lift group">
-                    <img
-                      src={product.image}
-                      alt={product.name}
-                      className="w-full h-48 object-cover rounded-xl mb-6"
-                    />
-                    <div className="flex items-center mb-4">
-                      {getIcon(product.type)}
-                      <h3 className="text-2xl font-bold text-gray-900">
-                        {product.name}
-                      </h3>
-                    </div>
-                    <p className="text-gray-600 mb-6">{product.description}</p>
-                    <div className="flex justify-between items-center">
-                      <span className="text-2xl font-bold text-forest">
-                        {formatPrice(product.price)}/bale
-                      </span>
-                      <Button
-                        onClick={handleOrderNow}
-                        className="holographic-bg text-white hover:scale-105 transition-transform"
-                      >
-                        Order Now
-                      </Button>
-                    </div>
-                  </GlassmorphicCard>
-                </motion.div>
-              ))}
+              </motion.div>
+            ))}
         </div>
       </div>
     </section>

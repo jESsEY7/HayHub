@@ -6,6 +6,8 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import Home from "@/pages/home";
 import NotFound from "@/pages/not-found";
 
+import QuotationPopup from "@/components/quotation-popup";
+
 function Router() {
   return (
     <Switch>
@@ -15,13 +17,24 @@ function Router() {
   );
 }
 
+import WhatsAppFAB from "@/components/whatsapp-fab";
+import { CurrencyProvider } from "@/lib/currencyContext";
+import { QuotationUIProvider } from "@/lib/quotationUIContext";
+import CurrencyConverter from "@/components/currency-converter";
+
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <Toaster />
-        <Router />
-      </TooltipProvider>
+      <QuotationUIProvider>
+        <CurrencyProvider>
+          <TooltipProvider>
+            <Toaster />
+            <Router />
+            <QuotationPopup />
+            <WhatsAppFAB />
+          </TooltipProvider>
+        </CurrencyProvider>
+      </QuotationUIProvider>
     </QueryClientProvider>
   );
 }
